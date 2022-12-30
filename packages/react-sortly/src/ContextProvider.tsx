@@ -1,9 +1,9 @@
-import React from 'react';
-import { DragSourceMonitor } from 'react-dnd';
+import React from "react";
+import { DragSourceMonitor } from "react-dnd";
 
-import context from './context';
-import Connectable from './types/Connectable';
-import Context from './types/Context';
+import context from "./context";
+import Connectable from "./types/Connectable";
+import Context from "./types/Context";
 
 type ContextProviderProps = {
   children: React.ReactElement | React.ReactElement[];
@@ -24,11 +24,7 @@ const ContextProvider = (props: ContextProviderProps) => {
     setInitialDepth,
   };
 
-  return (
-    <context.Provider value={value}>
-      {children}
-    </context.Provider>
-  );
+  return <context.Provider value={value}>{children}</context.Provider>;
 };
 
 export default ContextProvider;

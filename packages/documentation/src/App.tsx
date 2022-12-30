@@ -1,22 +1,32 @@
-import React from 'react';
-import { DndProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
-import TouchBackend from 'react-dnd-touch-backend';
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/indigo';
-import { 
-  CssBaseline, AppBar, Toolbar, SwipeableDrawer, List, ListSubheader, 
-  ListItem, ListItemText, Box, Typography, Divider, IconButton,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { HashRouter as Router, Route, Link as RouterLink } from 'react-router-dom';
+import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend } from "react-dnd-touch-backend";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import blue from "@material-ui/core/colors/indigo";
+import {
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  SwipeableDrawer,
+  List,
+  ListSubheader,
+  ListItem,
+  ListItemText,
+  Box,
+  Typography,
+  Divider,
+  IconButton,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import { HashRouter as Router, Route, Link as RouterLink } from "react-router-dom";
 
-import { ContextProvider } from 'react-sortly/src';
-import isTouchDevice from './isTouchDevice';
-import routes from './routes';
-import useScreenSize from './hooks/useScreenSize';
-import Dashboard from './pages/Dashboard';
+import { ContextProvider } from "react-sortly/src";
+import isTouchDevice from "./isTouchDevice";
+import routes from "./routes";
+import useScreenSize from "./hooks/useScreenSize";
+import Dashboard from "./pages/Dashboard";
 
 const theme = createMuiTheme({
   palette: {
@@ -41,26 +51,17 @@ const App = () => {
                 <Toolbar>
                   <Box>
                     <Box>
-                      <IconButton 
-                        color="inherit" 
-                        edge="start" 
-                        aria-label="Toggle navigation"
-                        onClick={() => setOpen(!open)}
-                      >
+                      <IconButton color="inherit" edge="start" aria-label="Toggle navigation" onClick={() => setOpen(!open)}>
                         <MenuIcon />
                       </IconButton>
                     </Box>
                   </Box>
                 </Toolbar>
               </AppBar>
-              <Box
-                component="nav"
-                aria-label="Main navigation"
-                width={{ sm: 0, md: 240 }}
-              >
+              <Box component="nav" aria-label="Main navigation" width={{ sm: 0, md: 240 }}>
                 <SwipeableDrawer
                   open={isLargeScreen ? true : open}
-                  variant={isLargeScreen ? 'permanent' : 'temporary'}
+                  variant={isLargeScreen ? "permanent" : "temporary"}
                   onOpen={() => setOpen(true)}
                   onClose={() => setOpen(false)}
                 >
@@ -73,13 +74,7 @@ const App = () => {
                     {routes.map(({ id, label, children }) => (
                       <List key={id} subheader={<ListSubheader>{label}</ListSubheader>}>
                         {children.map((child) => (
-                          <ListItem 
-                            key={child.id} 
-                            button 
-                            component={RouterLink} 
-                            to={`/${id}/${child.id}`}
-                            onClick={() => setOpen(false)}
-                          >
+                          <ListItem key={child.id} button component={RouterLink} to={`/${id}/${child.id}`} onClick={() => setOpen(false)}>
                             <ListItemText primary={child.label} />
                           </ListItem>
                         ))}
@@ -97,12 +92,15 @@ const App = () => {
                         key={child.id}
                         path={`/${id}/${child.id}`}
                         exact
+                        // eslint-disable-next-line react/no-unstable-nested-components
                         component={(props: any) => {
                           // setOpen(false);
                           const Page = child.component;
                           return (
                             <>
-                              <Typography variant="h4" component="h1" gutterBottom>{child.label}</Typography>
+                              <Typography variant="h4" component="h1" gutterBottom>
+                                {child.label}
+                              </Typography>
                               <Divider />
                               <Box mt={4}>
                                 <Page {...props} />

@@ -1,51 +1,50 @@
-import path from 'path';
-import webpack from 'webpack';
-import TerserPlugin from 'terser-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from "path";
+import webpack from "webpack";
+import TerserPlugin from "terser-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const config: webpack.Configuration = {
-  entry: './src/index.tsx',
+  entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, '../../docs')
+    path: path.resolve(__dirname, "../../docs"),
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         options: {
-          rootMode: 'upward'
-        }
+          rootMode: "upward",
+        },
       },
       {
         test: /\.(gif|png|jpg|jpeg|mp3)$/,
         exclude: /node_modules/,
-        loader: 'file-loader'
-      }
-    ]
+        loader: "file-loader",
+      },
+    ],
   },
   // @ts-ignore
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
-    })
+      template: "./index.html",
+    }),
   ],
   optimization: {
     minimizer: [
       new TerserPlugin({
         terserOptions: {
           output: {
-            comments: false
-          }
+            comments: false,
+          },
         },
-        sourceMap: true
-      })
-    ]
+      }),
+    ],
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.cjs']
-  }
+    extensions: [".js", ".ts", ".tsx", ".cjs"],
+  },
 };
 
 export default config;

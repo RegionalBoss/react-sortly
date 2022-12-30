@@ -1,11 +1,12 @@
-import React from 'react';
-import { useDrop as dndUseDrop, DragObjectWithType, DropTargetHookSpec, ConnectDropTarget } from 'react-dnd';
+import React from "react";
+import { useDrop as dndUseDrop, DropTargetHookSpec, ConnectDropTarget } from "react-dnd";
+import ObjectLiteral from "./types/ObjectLiteral";
 
-import itemContext from './itemContext';
-import Connectable from './types/Connectable';
+import itemContext from "./itemContext";
+import Connectable from "./types/Connectable";
 
-export default function useDrop<DragObject extends DragObjectWithType, DropResult, CollectedProps>(
-  spec?: Partial<DropTargetHookSpec<DragObject, DropResult, CollectedProps>>,
+export default function useDrop<DragObject extends ObjectLiteral, DropResult, CollectedProps>(
+  spec?: Partial<DropTargetHookSpec<DragObject, DropResult, CollectedProps>>
 ): [CollectedProps, ConnectDropTarget] {
   const connectedDropRef = React.useRef<Connectable>();
   const wasHoveredRef = React.useRef(false);
@@ -18,7 +19,7 @@ export default function useDrop<DragObject extends DragObjectWithType, DropResul
       const hovered = monitor.isOver({ shallow: true });
       return {
         hovered,
-        ...(spec && spec.collect ? spec.collect(monitor) : {})
+        ...(spec && spec.collect ? spec.collect(monitor) : {}),
       };
     },
   });

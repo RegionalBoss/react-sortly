@@ -1,39 +1,43 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Theme } from '@material-ui/core';
-import { Flipped } from 'react-flip-toolkit';
+import React from "react";
+import { makeStyles } from "@material-ui/styles";
+import { Theme } from "@material-ui/core";
+import { Flipped } from "react-flip-toolkit";
 
-import { ItemRendererProps, useDrag, useDrop, useIsClosestDragging } from 'react-sortly/src';
+import { ItemRendererProps, useDrag, useDrop, useIsClosestDragging } from "react-sortly/src";
 
 type ItemItemRendererProps = ItemRendererProps<{
   name: string;
 }> & {
   onBegin: () => void;
 };
-const useStyles = makeStyles<
-Theme, { muted: boolean; depth: number }>((theme: Theme) => ({
+const useStyles = makeStyles<Theme, { muted: boolean; depth: number }>((theme: Theme) => ({
   root: (props) => ({
-    position: 'relative',
+    position: "relative",
     marginBottom: theme.spacing(1.5),
     zIndex: props.muted ? 1 : 0,
   }),
   body: (props) => ({
-    background: '#fff',
-    cursor: 'move',
+    background: "#fff",
+    cursor: "move",
     padding: theme.spacing(2),
     marginLeft: theme.spacing(props.depth * 2),
-    boxShadow: props.muted ? '0px 0px 8px #666' : '0px 0px 2px #666',
-    border: props.muted ? '1px dashed #1976d2' : '1px solid transparent',
+    boxShadow: props.muted ? "0px 0px 8px #666" : "0px 0px 2px #666",
+    border: props.muted ? "1px dashed #1976d2" : "1px solid transparent",
   }),
 }));
 
 const ItemRenderer = (props: ItemItemRendererProps) => {
-  const { id, depth, data: { name }, onBegin } = props;
+  const {
+    id,
+    depth,
+    data: { name },
+    onBegin,
+  } = props;
   const [{ isDragging }, drag] = useDrag({
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-    begin() {
+    item() {
       onBegin();
     },
   });
@@ -46,7 +50,9 @@ const ItemRenderer = (props: ItemItemRendererProps) => {
   return (
     <Flipped flipId={id}>
       <div ref={(ref) => drop(ref)} className={classes.root}>
-        <div ref={drag} className={classes.body}>{name}</div>
+        <div ref={drag} className={classes.body}>
+          {name}
+        </div>
       </div>
     </Flipped>
   );

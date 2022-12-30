@@ -24,14 +24,14 @@
     "test": "jest --config ./jest.config.js --verbose",
     "lint": "eslint --ext .ts,.tsx src tests",
     "build:lib": "rm -rf ./lib && tsc --build ./tsconfig.json",
-    "build:dist": "rm -rf ./umd && rm -rf ./cjs && webpack -p --progress --config ./webpack.config.ts",
+    "build:dist": "rm -rf ./umd && rm -rf ./cjs && webpack --progress --config ./webpack.config.ts",
     "build": "yarn build:lib && yarn build:dist"
   },
   "peerDependencies": {
-    "immutability-helper": "^3.0.1",
+    "immutability-helper": "^3.1.1",
     "memoize-one": "^5.1.1",
-    "react": "^16.10.1",
-    "react-dnd": "^9.4.0",
-    "react-dom": "^16.10.1"
+    "react": "^18.0.0",
+    "react-dnd": "^16.0.1",
+    "react-dom": "^18.0.0"
   }
 }
