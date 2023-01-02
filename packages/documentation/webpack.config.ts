@@ -4,6 +4,7 @@ import TerserPlugin from "terser-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const config: webpack.Configuration = {
+  mode: "development",
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "../../docs"),
