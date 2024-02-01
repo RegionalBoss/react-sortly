@@ -66,3 +66,6 @@ const App = () => (
 const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
 ```
+
+How to publish:
+npm publish --access public

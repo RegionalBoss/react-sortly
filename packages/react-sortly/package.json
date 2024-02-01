@@ -1,6 +1,6 @@
 {
   "name": "@regionalboss/react-sortly",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "React nested sortable component",
   "keywords": [
     "react",
@@ -28,7 +28,8 @@
     "lint": "eslint --ext .ts,.tsx src tests",
     "build:lib": "rm -rf ./lib && tsc --build ./tsconfig.json",
     "build:dist": "rm -rf ./umd && rm -rf ./cjs && webpack --progress --config ./webpack.config.ts",
-    "build": "yarn build:lib && yarn build:dist"
+    "build": "yarn build:lib && yarn build:dist",
+    "prepublish": "yarn build"
   },
   "peerDependencies": {
     "immutability-helper": "^3.1.1",
@@ -45,6 +46,7 @@
   },
   "homepage": "https://github.com/RegionalBoss/react-sortly#readme",
   "directories": {
-    "test": "tests"
+    "test": "tests",
+    "src": "src"
   }
 }
