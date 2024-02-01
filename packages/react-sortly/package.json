@@ -1,6 +1,6 @@
 {
   "name": "@regionalboss/react-sortly",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "React nested sortable component",
   "keywords": [
     "react",
@@ -11,7 +11,10 @@
     "drop",
     "dnd"
   ],
-  "repository": "git@github.com:lytc/react-sortly.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/RegionalBoss/react-sortly"
+  },
   "author": "lytc <prtran@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
@@ -33,5 +36,15 @@
     "react": "^18.0.0",
     "react-dnd": "^16.0.1",
     "react-dom": "^18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "bugs": {
+    "url": "https://github.com/RegionalBoss/react-sortly/issues"
+  },
+  "homepage": "https://github.com/RegionalBoss/react-sortly#readme",
+  "directories": {
+    "test": "tests"
   }
 }
